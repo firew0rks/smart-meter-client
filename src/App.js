@@ -5,6 +5,18 @@ import './App.css'
 import {Grid, Divider, Switch, AppBar, IconButton, Toolbar, Typography} from 'material-ui';
 import ColumnDisplay from './ColumnDisplay';
 import RowDisplay from './RowDisplay';
+import {LineChart, YAxis, XAxis, CartesianGrid, Line, ResponsiveContainer} from 'recharts'; 
+
+const dataLineChart = [
+  //data for Line Chart
+    {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
+    {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
+    {name: 'Page C', uv: 2000, pv: 1000, amt: 2290},
+    {name: 'Page D', uv: 2780, pv: 1908, amt: 2000},
+    {name: 'Page E', uv: 4890, pv: 2800, amt: 2181},
+    {name: 'Page F', uv: 3390, pv: 2800, amt: 2500},
+    {name: 'Page G', uv: 4490, pv: 3300, amt: 2100},
+  ];
 
 const styles = {
   divider: {
@@ -19,7 +31,8 @@ class App extends Component {
 
     this.state = {
       storageValue: 0,
-      web3: null
+      web3: null,
+      dataLineChart: dataLineChart,
     }
   }
 
@@ -98,8 +111,16 @@ class App extends Component {
 
             </Grid>
             <Divider style={styles.divider}/>
-            <Grid>
-              GRAPH GOES HERE!
+            <Grid container style={{height:'100%'}} alignItems={'center'}>
+              <ResponsiveContainer width={'100%'} height={300} >
+                <LineChart width={500} height={300} data={this.state.dataLineChart}>
+                  <XAxis dataKey="name"/>
+                  <YAxis/>
+                  {/* <CartesianGrid stroke="#eee" strokeDasharray="5 5"/> */}
+                  <Line type="monotone" dataKey="uv" stroke="#EFFCF0" />
+                  <Line type="monotone" dataKey="pv" stroke="#4C5760" />
+                </LineChart>
+              </ResponsiveContainer>
             </Grid>
           </Grid>
         </Grid>
