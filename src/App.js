@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 // import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
-import getWeb3 from './utils/getWeb3'
+// import getWeb3 from './utils/getWeb3'
 
 import HelloWorld from './HelloWorld'
 import AutoCompleteExampleSimple from './AutoCompleteExampleSimple'
@@ -24,23 +24,23 @@ class App extends Component {
     }
   }
 
-  componentWillMount() {
-    // Get network provider and web3 instance.
-    // See utils/getWeb3 for more info.
+  // componentWillMount() {
+  //   // Get network provider and web3 instance.
+  //   // See utils/getWeb3 for more info.
 
-    getWeb3
-    .then(results => {
-      this.setState({
-        web3: results.web3
-      })
+  //   getWeb3
+  //   .then(results => {
+  //     this.setState({
+  //       web3: results.web3
+  //     })
 
-      // Instantiate contract once web3 provided.
-      this.instantiateContract()
-    })
-    .catch(() => {
-      console.log('Error finding web3.')
-    })
-  }
+  //     // Instantiate contract once web3 provided.
+  //     this.instantiateContract()
+  //   })
+  //   .catch(() => {
+  //     console.log('Error finding web3.')
+  //   })
+  // }
 
   // instantiateContract() {
   //   /*
