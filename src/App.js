@@ -79,6 +79,9 @@ class App extends Component {
       <div>
         <HelloWorld/>
         <MuiThemeProvider>
+          <AppBar/>
+        </MuiThemeProvider>
+        <MuiThemeProvider>
           <AutoCompleteExampleSimple/>
         </MuiThemeProvider>
       </div>
