@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import SimpleStorageContract from '../build/contracts/SimpleStorage.json';
 import getWeb3 from './utils/getWeb3';
 import './App.css'
-import {Grid, Divider, Switch, AppBar, IconButton, Toolbar, Typography} from 'material-ui';
+import {
+  Grid, Divider, Switch, AppBar, IconButton, Toolbar, Typography, Drawer, List, ListItem,
+  Button
+} from 'material-ui';
 import ColumnDisplay from './ColumnDisplay';
 import RowDisplay from './RowDisplay';
 import NavBar from './NavBar';
@@ -14,14 +17,23 @@ const styles = {
   }
 };
 
+const drawerMenu = ['Hello', 'World'];
+
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       storageValue: 0,
-      web3: null
+      web3: null,
+      drawerIsOpen: false
     }
+  }
+
+  toggleDrawer() {
+    this.setState({
+      drawerIsOpen: !this.state.drawerIsOpen
+    })
   }
 
   componentWillMount() {
@@ -76,7 +88,7 @@ class App extends Component {
 
   render() {
     return <div>
-      <NavBar/>
+      <NavBar toggleDrawer={() => this.toggleDrawer()}/>
 
       <Grid container style={{padding: 30, height: '100%', marginTop: 30}}>
         <Grid item xs={6} style={{paddingRight: 25}}>
@@ -145,6 +157,21 @@ class App extends Component {
 
         </Grid>
       </Grid>
+
+      <Drawer open={this.state.drawerIsOpen} anchor="right" classes={{root: {color: '#4C5760'}}}>
+        <Button onClick={() => this.toggleDrawer()} style={{color: 'grey'}}>
+          x
+        </Button>
+
+        <List style={{width: 400, color: '#EFFCF0'}}>
+          {drawerMenu.map((item, i) => {
+            return <ListItem button key={i}>
+              {item}
+            </ListItem>
+          })}
+
+        </List>
+      </Drawer>
     </div>
   }
 }

@@ -2,20 +2,6 @@ import React from 'react';
 import {Button, Grid} from 'material-ui';
 
 export default class NavBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      drawerIsOpen: false
-    }
-  }
-
-  toggleDrawer() {
-    console.log('clicked');
-    this.setState({
-      drawerIsOpen: !this.setState.drawerIsOpen
-    })
-  }
-
   render() {
     return <div style={{backgroundColor: '#4C5760', height: '60px', top: 0, position: 'fixed', width: '100%', zIndex: 100, left: 0}}>
       <Grid container>
@@ -39,7 +25,7 @@ export default class NavBar extends React.Component {
 
         <Grid item xs={10} >
           <Grid container justify={'flex-end'}>
-            <Button onClick={() => this.toggleDrawer()} style={{marginTop: 15, marginRight: 10}}>
+            <Button onClick={() => this.props.toggleDrawer()} style={{marginTop: 15, marginRight: 10}}>
               <i className="fas fa-bars fa-2x" style={{color: '#EFFCF0'}}></i>
             </Button>
           </Grid>
