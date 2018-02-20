@@ -5,6 +5,7 @@ import './App.css'
 import {Grid, Divider, Switch, AppBar, IconButton, Toolbar, Typography} from 'material-ui';
 import ColumnDisplay from './ColumnDisplay';
 import RowDisplay from './RowDisplay';
+import NavBar from './NavBar';
 
 const styles = {
   divider: {
@@ -75,9 +76,10 @@ class App extends Component {
 
   render() {
     return <div>
-      <div style={{backgroundColor: '#4C5760', height: '60px', top: 0, position: 'fixed', width: '100%', zIndex: 100, left: 0}}/>
+      <NavBar/>
+
       <Grid container style={{padding: 30, height: '100%', marginTop: 30}}>
-        <Grid item xs={6}>
+        <Grid item xs={6} style={{paddingRight: 25}}>
           <Grid container direction={'column'}>
             <Grid item xs={12}>
               <h1>DASHBOARD</h1>
@@ -103,9 +105,44 @@ class App extends Component {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={6}>
-          <RowDisplay label={'Curent Usage'} text={'1,576 kWh'}/>
-          <RowDisplay label={'Average Usage'} text={'1,247 kWh'}/>
+
+        {/* Second column */}
+        <Grid item xs={6} style={{paddingLeft: 25}}>
+          <Grid container style={{height: 50}}/>
+          <Grid container style={{height: 300}}>
+            <Grid item xs={12}>
+              <RowDisplay label={'Curent Usage'} text={'1,576 kWh'}/>
+            </Grid>
+            <Grid item xs={12}>
+              <RowDisplay label={'Average Usage'} text={'1,247 kWh'}/>
+            </Grid>
+          </Grid>
+          <Grid container style={{height: 43}}/>
+
+          <Divider style={Object.assign({}, styles.divider, {marginBottom: 20})}/>
+
+
+          <Grid container>
+            <Grid item xs={6} style={{borderRight: '10px solid #77B5B0'}}>
+              <Grid container>
+                <Grid item xs={12}>
+                  PIE CHART GOES HERE
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item xs={6}>
+
+              <Grid container direction={'column'} style={{padding: '20px 20px 20px 30px'}}>
+                <Grid item xs={12}>
+                  <ColumnDisplay label={'Amount Spent this month'} number={'$2,382'} />
+                </Grid>
+                <Grid item xs={12}>
+                  <ColumnDisplay label={'Amount saved this month'} number={'$273'} />
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+
         </Grid>
       </Grid>
     </div>
