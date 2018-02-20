@@ -94,9 +94,28 @@ class App extends Component {
         <Grid item xs={6} style={{paddingRight: 25}}>
           <Grid container direction={'column'}>
             <Grid item xs={12}>
-              <h1>DASHBOARD</h1>
+              <Grid container direction={'row'}>
+                <Grid item xs={5}>
+                  <h1>DASHBOARD</h1>
+                </Grid>
+                <Grid item xs={4}>
+                  <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <b style={{fontSize: 40, color: '#DCEED1', marginRight: 10}}>7238</b>
+                    <img src="/images/logo.png" style={{height: 40}}/>
+                  </div>
+                </Grid>
+                <Grid item xs={3}>
+                  <div style={{backgroundColor: '#77B5B0', height: 40, width: 130, marginTop: 40, borderRadius: 20}}>
+                    <div style={{backgroundColor: '#EFFCF0', height: 40, width: 70, marginTop: 40, borderRadius: 20, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                      <b style={{fontSize: 12}}>SELLING</b>
+                    </div>
+                  </div>
+              </Grid>
+              </Grid>
             </Grid>
+
             <Divider style={styles.divider}/>
+
             <Grid item xs={12} style={{margin: '10px', height: '200px'}}>
               <Grid container style={{height: '100%'}} alignItems={'center'}>
                 <Grid item xs={3}>
