@@ -10,6 +10,7 @@ import ColumnDisplay from './ColumnDisplay';
 import RowDisplay from './RowDisplay';
 import NavBar from './NavBar';
 import {LineChart, YAxis, XAxis, CartesianGrid, Line, ResponsiveContainer} from 'recharts'; 
+import {PieChart, Pie, Sector, Cell} from 'recharts';
 
 const dataLineChart = [
   //data for Line Chart
@@ -21,6 +22,30 @@ const dataLineChart = [
     {name: 'Page F', uv: 3390, pv: 2800, amt: 2500},
     {name: 'Page G', uv: 4490, pv: 3300, amt: 2100},
   ];
+
+  //data for Pie Chart
+  const dataPieChart = [
+    {name: 'Group A', value: 400}, 
+    {name: 'Group B', value: 300},
+    //{name: 'Group C', value: 300}, 
+    //{name: 'Group D', value: 200}
+  ];
+
+  //settings for Pie Chart
+  const COLORS = ['#EFFCF0', '#4C5760'/*, '#FFBB28', '#FF8042'*/];
+  const RADIAN = Math.PI / 180; 
+  const renderCustomizedLabel = ({ 
+    cx, cy, midAngle, innerRadius, outerRadius, percent, index 
+  }) => {
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+    const x  = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy  + radius * Math.sin(-midAngle * RADIAN);
+    return (
+      <text x={x} y={y} fill='#E2D58B' textAnchor={x > cx ? 'start' : 'end'} 	dominantBaseline="central">
+      {`${(percent * 100).toFixed(0)}%`}
+      </text>
+    )
+  };
 
 const styles = {
   divider: {
@@ -40,6 +65,8 @@ class App extends Component {
       web3: null,
       drawerIsOpen: false,
       dataLineChart: dataLineChart,
+      dataPieChart: dataPieChart,
+
     }
   }
 
@@ -144,15 +171,33 @@ class App extends Component {
 
             </Grid>
             <Divider style={styles.divider}/>
-            <Grid container style={{height:'100%'}} alignItems={'center'}>
-              <ResponsiveContainer width={'100%'} height={300} >
+            <Grid>
+              {/* <ResponsiveContainer width={'100%'} height={300} >
                 <LineChart width={500} height={300} data={this.state.dataLineChart}>
                   <XAxis dataKey="name"/>
                   <YAxis/>
-                  {/* <CartesianGrid stroke="#eee" strokeDasharray="5 5"/> */}
+                  <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
                   <Line type="monotone" dataKey="uv" stroke="#EFFCF0" />
                   <Line type="monotone" dataKey="pv" stroke="#4C5760" />
                 </LineChart>
+              </ResponsiveContainer> */}
+              <ResponsiveContainer width={'100%'} height={'100%'}>
+                <PieChart width={1000} height={400} onMouseEnter={this.onPieEnter}>
+                  <Pie 
+                    data={this.state.dataPieChart} 
+                    cx={300} 
+                    cy={200} 
+                    labelLine={false}
+                    label={renderCustomizedLabel}
+                    outerRadius={80} 
+                    fill="#8884d8"
+                    height={300}
+                  >
+                    {
+                      dataPieChart.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+                    }
+                  </Pie>
+                </PieChart>
               </ResponsiveContainer>
             </Grid>
           </Grid>
