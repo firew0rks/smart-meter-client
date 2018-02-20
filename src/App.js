@@ -6,7 +6,8 @@ import getWeb3 from './utils/getWeb3'
 import HelloWorld from './HelloWorld'
 import AutoCompleteExampleSimple from './AutoCompleteExampleSimple'
 import AppBar from 'material-ui/AppBar';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import AppBarExampleIcon from './AppBarExampleIcon';
 
 import './css/oswald.css'
 import './css/open-sans.css'
@@ -79,7 +80,7 @@ class App extends Component {
       <div>
         <HelloWorld/>
         <MuiThemeProvider>
-          <AppBar/>
+          <AppBarExampleIcon/>
         </MuiThemeProvider>
         <MuiThemeProvider>
           <AutoCompleteExampleSimple/>
