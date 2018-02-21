@@ -18,8 +18,7 @@ import {
 import ColumnDisplay from './ColumnDisplay';
 import RowDisplay from './RowDisplay';
 import NavBar from './NavBar';
-import {LineChart, YAxis, XAxis, CartesianGrid, Line, ResponsiveContainer} from 'recharts'; 
-import {PieChart, Pie, Sector, Cell, Legend} from 'recharts';
+import {LineChart, Legend, YAxis, XAxis, CartesianGrid, Line, Tooltip, ResponsiveContainer, PieChart, Pie, Sector, Cell} from 'recharts'; 
 
 const dataLineChart = [
   //data for Line Chart
@@ -203,16 +202,18 @@ class App extends Component {
 
             </Grid>
             <Divider style={styles.divider}/>
-            <Grid>
+            <Grid container style={{height: '100%'},{width:'100%'}} alignItems={'center'}>
+              <Grid item xs={12}>
               <ResponsiveContainer width={'100%'} height={300} >
                 <LineChart width={500} height={300} data={this.state.dataLineChart}>
+                  <Legend verticalAlign="top" height={36}/>
                   <XAxis dataKey="name"/>
                   <YAxis/>
-                  {/* <CartesianGrid stroke="#eee" strokeDasharray="5 5"/> */}
                   <Line type="monotone" dataKey="uv" stroke="#D1EEDC" />
                   <Line type="monotone" dataKey="pv" stroke="#4C5760" />
                 </LineChart>
               </ResponsiveContainer>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
@@ -249,6 +250,7 @@ class App extends Component {
                         outerRadius={'100%'} 
                         fill='none'
                       >
+                        <Tooltip/>
                         {
                           dataPieChart.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
                         }
