@@ -22,14 +22,16 @@ import {LineChart, Legend, YAxis, XAxis, CartesianGrid, Line, Tooltip, Responsiv
 
 const dataLineChart = [
   //data for Line Chart
-    {name: 'start time', uv: 4000, pv: 2400, amt: 2400},
-    {name: '', uv: 3000, pv: 1398, amt: 2210},
-    {name: '', uv: 2000, pv: 1000, amt: 2290},
-    {name: '', uv: 2780, pv: 1908, amt: 2000},
-    {name: '', uv: 4890, pv: 2800, amt: 2181},
-    {name: '', uv: 3390, pv: 2800, amt: 2500},
-    {name: 'end time', uv: 4490, pv: 3300, amt: 2100},
+    {name: '', 'Energy Produced': 100, 'Energy Sold': 0},
+    {name: '', 'Energy Produced': 170, 'Energy Sold': 50},
+    {name: '', 'Energy Produced': 200, 'Energy Sold': 25},
+    {name: '', 'Energy Produced': 150, 'Energy Sold': 70},
+    {name: '', 'Energy Produced': 210, 'Energy Sold': 85},
+    {name: '', 'Energy Produced': 300, 'Energy Sold': 200},
+    {name: 'Last 24hrs', 'Energy Produced': 300, 'Energy Sold': 220},
   ];
+  //adds units to the y-axis
+  const formatter = (value) => `${value} kW`;
 
   //data for Pie Chart
   const dataPieChart = [
@@ -74,10 +76,10 @@ class App extends Component {
       drawerIsOpen: false,
       dataPieChart: dataPieChart,
       dataLineChart: dataLineChart,
-      production: 0 + " kWH",
+      production: 0 + " kW",
       efficiency: 0 + " %",
-      current_usage: 0 + " kWH",
-      average_usage: 0 + "kWH",
+      current_usage: 0 + " kW",
+      average_usage: 0 + "kW",
       amount_spent_this_month: "$" + 0,
       amount_saved_this_month: "$" + 0
 
@@ -124,7 +126,7 @@ class App extends Component {
       console.log(instance);
       instance.getProduction.call().then(data => {
         this.setState({
-          production: data + " kWH"
+          production: data + " kW"
         });
       })
       instance.getEfficiency.call().then(data => {
@@ -134,12 +136,12 @@ class App extends Component {
       })
       instance.getCurrent_usage.call().then(data => {
         this.setState({
-          current_usage: data + " kWH"
+          current_usage: data + " kW"
         });
       })
       instance.getAverage_usage.call().then(data => {
         this.setState({
-          average_usage: data + " kWH"
+          average_usage: data + " kW"
         });
       })
       instance.getAmount_spent_this_month.call().then(data => {
@@ -171,13 +173,13 @@ class App extends Component {
                   <h1>DASHBOARD</h1>
                 </Grid>
                 <Grid item xs={4}>
-                  <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <b style={{fontSize: 40, color: '#DCEED1', marginRight: 10}}>7238</b>
+                  
+                </Grid>
+                <Grid item xs={3} >
+                <div style={{display: 'flex', justifyContent: 'center', marginTop: 40}}>
+                    <b style={{fontSize: 40, color: '#DCEED1', marginRight: 10 }}>7238</b>
                     <img src="/images/logo.png" style={{height: 40}}/>
                   </div>
-                </Grid>
-                <Grid item xs={3}>
-                  <SwitchLabels/>
                 </Grid>
               </Grid>
             </Grid>
@@ -204,12 +206,21 @@ class App extends Component {
               <ResponsiveContainer width={'100%'} height={330} >
                 <LineChart width={500} height={300} data={this.state.dataLineChart}>
                   <Legend verticalAlign="bottom" height={36}/>
-                  <XAxis dataKey="name"/>
-                  <YAxis/>
-                  <Line type="monotone" dataKey="uv" stroke="#D1EEDC" />
-                  <Line type="monotone" dataKey="pv" stroke="#4C5760" />
+                  <XAxis dataKey={"name"}/>
+                  <YAxis tickFormatter={formatter}/>
+                  <Line type="monotone" dataKey="Energy Produced" stroke="#D1EEDC" />
+                  <Line type="monotone" dataKey="Energy Sold" stroke="#4C5760" />
                 </LineChart>
               </ResponsiveContainer>
+              </Grid>
+              <Grid container>
+                <Grid item xs ={10}>
+                </Grid>
+                <Grid item xs = {2}>
+
+                  {/* Selling Switch */}
+                  <SwitchLabels/> 
+                </Grid>
               </Grid>
             </Grid>
           </Grid>

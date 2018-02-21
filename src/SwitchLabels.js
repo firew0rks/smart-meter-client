@@ -1,18 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import green from 'material-ui/colors/green';
+// import white from 'material-ui/colors/white';
 import { FormGroup, FormControlLabel } from 'material-ui/Form';
 import Switch from 'material-ui/Switch';
 
 const styles = {
   checked: {
-    color: green[500],
+    color: '#DCEED1',
     '& + $bar': {
-      backgroundColor: green[500],
+      backgroundColor: '#DCEED1',
     },
   },
-  bar: {},
+  label: {
+    color: '#DCEED1',
+    },
+  bar:{}
 };
 
 class SwitchLabels extends React.Component {
@@ -27,47 +30,23 @@ class SwitchLabels extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
 
     return (
       <FormGroup row>
         <FormControlLabel
+          classes={{label:this.props.classes.checked}}
           control={
             <Switch
-              checked={this.state.checkedA}
-              onChange={this.handleChange('checkedA')}
-              value="checkedA"
-            />
-          }
-          label="Secondary"
-        />
-        <FormControlLabel
-          control={
-            <Switch
-              checked={this.state.checkedB}
-              onChange={this.handleChange('checkedB')}
-              value="checkedB"
-              color="primary"
-            />
-          }
-          label="Primary"
-        />
-        <FormControlLabel control={<Switch value="checkedC" />} label="Uncontrolled" />
-        <FormControlLabel disabled control={<Switch value="checkedD" />} label="Disabled" />
-        <FormControlLabel disabled control={<Switch checked value="checkedE" />} label="Disabled" />
-        <FormControlLabel
-          control={
-            <Switch
-              checked={this.state.checkedF}
+              checked={this.state.checkedF}   
               onChange={this.handleChange('checkedF')}
               value="checkedF"
               classes={{
-                checked: classes.checked,
-                bar: classes.bar,
+                checked: this.props.classes.checked,
+                bar: this.props.classes.bar
               }}
             />
-          }
-          label="Custom color"
+          } 
+          label="Selling"
         />
       </FormGroup>
     );
