@@ -123,30 +123,21 @@ class Main extends Component {
       powerContract.deployed().then(instance => {
 
 
+
         this.state.web3.eth.getAccounts((error, accounts) => {
           powerContract.deployed().then(instance => {
             instance.get_user_information({from: accounts[0]}).then(data => {
               this.setState({
-                production: data[1] + " kWH"
+                production: data[1] + " kWH",
+                current_usage: data[3] + " kW",
+                amount_spent_this_month: "$" + data[4],
+                amount_saved_this_month: "$" + data[5]
+
+
+
               });
             })
           })
-        })
-        
-        instance.getCurrent_usage.call().then(data => {
-          this.setState({
-            current_usage: data + " kW"
-          });
-        })
-        instance.getAmount_spent_this_month.call().then(data => {
-          this.setState({
-            amount_spent_this_month: "$" + data
-          });
-        })
-        instance.getAmount_saved_this_month.call().then(data => {
-          this.setState({
-            amount_saved_this_month: "$" + data
-          });
         })
       })
   
