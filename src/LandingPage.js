@@ -85,7 +85,8 @@ class LandingPage extends Component {
             <Grid item > 
             
             {/* BUTTON TO GO TO MAIN.JS */}
-            <Button variant="raised" className={this.button} href={'/main'} style={{fontFamily: "Roboto", fontWeight: 'bold', fontSize: 45, border: 'solid', color: 'white', backgroundColor: '#73bfb8', minWidth:450, minHeight: 150,borderRadius:30}}>
+              <Button variant="raised" className={this.button} href={'/main'} style={{backgroundColor: '#73bfb8', fontFamily: "Roboto", fontWeight: 'bold', fontSize: 45, border: 'solid', color: 'white',minWidth:450, minHeight: 150,borderRadius:30}}>
+            {/*  , }} */}
               VIEW MY POWER CHAIN
             </Button>
                 
