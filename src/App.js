@@ -209,7 +209,7 @@ class App extends Component {
             <Grid>
               <ResponsiveContainer width={'100%'} height={300} >
                 <LineChart width={500} height={300} data={this.state.dataLineChart}>
-                  <Legend verticalAlign="top" height={36}/>
+                  <Legend verticalAlign="bottom" height={36}/>
                   <XAxis dataKey="name"/>
                   <YAxis/>
                   {/* <CartesianGrid stroke="#eee" strokeDasharray="5 5"/> */}
@@ -241,9 +241,9 @@ class App extends Component {
             <Grid item xs={6} style={{borderRight: '10px solid #77B5B0'}}>
               <Grid container>
                 <Grid item xs={12}>
-                  <ResponsiveContainer width={'100%'} height={300}>
+                  <ResponsiveContainer width={'100%'} height={330}>
                     <PieChart width={1000} height={400} onMouseEnter={this.onPieEnter}>
-                      <Legend verticalAlign="top" height={36}/>
+                      <Legend verticalAlign="bottom" height={30}/>
                       <Pie 
                         data={this.state.dataPieChart}
                         /* nameKey={"name"}  */
@@ -251,7 +251,7 @@ class App extends Component {
                         cy={145} 
                         labelLine={false}
                         label={renderCustomizedLabel}
-                        outerRadius={'100%'} 
+                        outerRadius={'90%'} 
                         fill='none'
                       >
                         <Tooltip/>
@@ -261,10 +261,6 @@ class App extends Component {
                       </Pie>
                     </PieChart>
                   </ResponsiveContainer>
-                  <Grid>
-                    <AlarmIcon />
-                    KEY
-                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
