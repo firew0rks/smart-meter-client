@@ -15,14 +15,11 @@ import {
   Button
 } from 'material-ui';
 
-import mui from 'material-ui';
-import AlarmIcon from 'react-material-icons/icons/action/alarm';
-
 import ColumnDisplay from './ColumnDisplay';
 import RowDisplay from './RowDisplay';
 import NavBar from './NavBar';
 import {LineChart, YAxis, XAxis, CartesianGrid, Line, ResponsiveContainer} from 'recharts'; 
-import {PieChart, Pie, Sector, Cell} from 'recharts';
+import {PieChart, Pie, Sector, Cell, Legend} from 'recharts';
 
 const dataLineChart = [
   //data for Line Chart
@@ -76,7 +73,6 @@ class App extends Component {
       storageValue: 0,
       web3: null,
       drawerIsOpen: false,
-      dataLineChart: dataLineChart,
       dataPieChart: dataPieChart,
       production: 0 + " kWH",
       efficiency: 0 + " %",
@@ -243,9 +239,9 @@ class App extends Component {
                 <Grid item xs={12}>
                   <ResponsiveContainer width={'100%'} height={300}>
                     <PieChart width={1000} height={400} onMouseEnter={this.onPieEnter}>
+                    <Legend verticalAlign="bottom" height={36} layout="vertical"/>
                       <Pie 
                         data={this.state.dataPieChart}
-                        /* nameKey={"name"}  */
                         cx={200} 
                         cy={145} 
                         labelLine={false}
@@ -260,8 +256,6 @@ class App extends Component {
                     </PieChart>
                   </ResponsiveContainer>
                   <Grid>
-                    <AlarmIcon />
-                    KEY
                   </Grid>
                 </Grid>
               </Grid>
