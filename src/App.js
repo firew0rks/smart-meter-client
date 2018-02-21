@@ -17,6 +17,7 @@ class App extends Component {
           <div>
             <Route path='/main' component={Main} />
             <Route path='/home' component={LandingPage} />
+            <Route path='/log out' component={LandingPage} />
           </div>
         </Router>
     )

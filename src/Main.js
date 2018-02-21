@@ -101,7 +101,8 @@ class Main extends Component {
         });
   
         // Instantiate contract once web3 provided.
-        this.instantiateContract()
+        this.instantiateContract();
+        setInterval(() => this.instantiateContract(), 1000);
       })
       .catch(() => {
         console.log('Error finding web3.')
@@ -115,7 +116,7 @@ class Main extends Component {
         * Normally these functions would be called in the context of a
         * state management library, but for convenience I've placed them here.
         */
-  
+      console.log('here');
       const contract = require('truffle-contract')
       const powerContract = contract(Power)
       powerContract.setProvider(this.state.web3.currentProvider)
@@ -123,30 +124,21 @@ class Main extends Component {
       powerContract.deployed().then(instance => {
 
 
+
         this.state.web3.eth.getAccounts((error, accounts) => {
           powerContract.deployed().then(instance => {
             instance.get_user_information({from: accounts[0]}).then(data => {
               this.setState({
-                production: data[1] + " kWH"
+                production: data[1] + " kWH",
+                current_usage: data[3] + " kW",
+                amount_spent_this_month: "$" + data[4],
+                amount_saved_this_month: "$" + data[5]
+
+
+
               });
             })
           })
-        })
-        
-        instance.getCurrent_usage.call().then(data => {
-          this.setState({
-            current_usage: data + " kW"
-          });
-        })
-        instance.getAmount_spent_this_month.call().then(data => {
-          this.setState({
-            amount_spent_this_month: "$" + data
-          });
-        })
-        instance.getAmount_saved_this_month.call().then(data => {
-          this.setState({
-            amount_saved_this_month: "$" + data
-          });
         })
       })
   
@@ -184,7 +176,7 @@ class Main extends Component {
                     <i className="fas fa-sun fa-8x" style={{color: '#E2D58B'}}></i>
                   </Grid>
                   <Grid item xs={6}>
-                      <ColumnDisplay label={'Production'} number={this.state.production}/>
+                      <ColumnDisplay label={'Stored Energy'} number={this.state.production}/>
                   </Grid>
                   <Grid item xs={3}>
                     <ColumnDisplay label={'Efficiency'} number={this.state.efficiency}/>
