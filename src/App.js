@@ -6,6 +6,10 @@ import {
   Grid, Divider, Switch, AppBar, IconButton, Toolbar, Typography, Drawer, List, ListItem,
   Button
 } from 'material-ui';
+
+import mui from 'material-ui';
+import AlarmIcon from 'react-material-icons/icons/action/alarm';
+
 import ColumnDisplay from './ColumnDisplay';
 import RowDisplay from './RowDisplay';
 import NavBar from './NavBar';
@@ -14,25 +18,25 @@ import {PieChart, Pie, Sector, Cell} from 'recharts';
 
 const dataLineChart = [
   //data for Line Chart
-    {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
-    {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
-    {name: 'Page C', uv: 2000, pv: 1000, amt: 2290},
-    {name: 'Page D', uv: 2780, pv: 1908, amt: 2000},
-    {name: 'Page E', uv: 4890, pv: 2800, amt: 2181},
-    {name: 'Page F', uv: 3390, pv: 2800, amt: 2500},
-    {name: 'Page G', uv: 4490, pv: 3300, amt: 2100},
+    {name: 'start time', uv: 4000, pv: 2400, amt: 2400},
+    {name: '', uv: 3000, pv: 1398, amt: 2210},
+    {name: '', uv: 2000, pv: 1000, amt: 2290},
+    {name: '', uv: 2780, pv: 1908, amt: 2000},
+    {name: '', uv: 4890, pv: 2800, amt: 2181},
+    {name: '', uv: 3390, pv: 2800, amt: 2500},
+    {name: 'end time', uv: 4490, pv: 3300, amt: 2100},
   ];
 
   //data for Pie Chart
   const dataPieChart = [
-    {name: 'Group A', value: 400}, 
-    {name: 'Group B', value: 300},
+    {name: 'RENEWABLE SOURCES', value: 400}, 
+    {name: 'GRID', value: 300},
     //{name: 'Group C', value: 300}, 
     //{name: 'Group D', value: 200}
   ];
 
   //settings for Pie Chart
-  const COLORS = ['#EFFCF0', '#4C5760'/*, '#FFBB28', '#FF8042'*/];
+  const COLORS = ['#D1EEDC', '#4C5760'/*, '#FFBB28', '#FF8042'*/];
   const RADIAN = Math.PI / 180; 
   const renderCustomizedLabel = ({ 
     cx, cy, midAngle, innerRadius, outerRadius, percent, index 
@@ -41,7 +45,7 @@ const dataLineChart = [
     const x  = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy  + radius * Math.sin(-midAngle * RADIAN);
     return (
-      <text x={x} y={y} fill='#E2D58B' textAnchor={x > cx ? 'start' : 'end'} 	dominantBaseline="central">
+      <text x={x} y={y} fill='none' textAnchor={x > cx ? 'start' : 'end'} 	dominantBaseline="central">
       {`${(percent * 100).toFixed(0)}%`}
       </text>
     )
@@ -172,33 +176,16 @@ class App extends Component {
             </Grid>
             <Divider style={styles.divider}/>
             <Grid>
-              {/* <ResponsiveContainer width={'100%'} height={300} >
+              <ResponsiveContainer width={'100%'} height={300} >
                 <LineChart width={500} height={300} data={this.state.dataLineChart}>
                   <XAxis dataKey="name"/>
                   <YAxis/>
-                  <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
-                  <Line type="monotone" dataKey="uv" stroke="#EFFCF0" />
+                  {/* <CartesianGrid stroke="#eee" strokeDasharray="5 5"/> */}
+                  <Line type="monotone" dataKey="uv" stroke="#D1EEDC" />
                   <Line type="monotone" dataKey="pv" stroke="#4C5760" />
                 </LineChart>
-              </ResponsiveContainer> */}
-              <ResponsiveContainer width={'100%'} height={'100%'}>
-                <PieChart width={1000} height={400} onMouseEnter={this.onPieEnter}>
-                  <Pie 
-                    data={this.state.dataPieChart} 
-                    cx={300} 
-                    cy={200} 
-                    labelLine={false}
-                    label={renderCustomizedLabel}
-                    outerRadius={80} 
-                    fill="#8884d8"
-                    height={300}
-                  >
-                    {
-                      dataPieChart.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
-                    }
-                  </Pie>
-                </PieChart>
               </ResponsiveContainer>
+              
             </Grid>
           </Grid>
         </Grid>
@@ -223,7 +210,28 @@ class App extends Component {
             <Grid item xs={6} style={{borderRight: '10px solid #77B5B0'}}>
               <Grid container>
                 <Grid item xs={12}>
-                  PIE CHART GOES HERE
+                  <ResponsiveContainer width={'100%'} height={300}>
+                    <PieChart width={1000} height={400} onMouseEnter={this.onPieEnter}>
+                      <Pie 
+                        data={this.state.dataPieChart}
+                        /* nameKey={"name"}  */
+                        cx={200} 
+                        cy={145} 
+                        labelLine={false}
+                        label={renderCustomizedLabel}
+                        outerRadius={'100%'} 
+                        fill='none'
+                      >
+                        {
+                          dataPieChart.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+                        }
+                      </Pie>
+                    </PieChart>
+                  </ResponsiveContainer>
+                  <Grid>
+                    <AlarmIcon />
+                    KEY
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
