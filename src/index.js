@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import LandingPage from './LandingPage'
+import { Router, Route, hashHistory } from 'react-router'
+import App from './App'
 
 ReactDOM.render(
-  <LandingPage />,
+  <App/>,
   document.getElementById('root')
 );
