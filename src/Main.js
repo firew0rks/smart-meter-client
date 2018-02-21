@@ -75,9 +75,9 @@ class Main extends Component {
         dataPieChart: dataPieChart,
         dataLineChart: dataLineChart,
         production: 0 + " kW",
-        efficiency: 11 + " %",
+        efficiency: 11 + "%",
         current_usage: 0 + " kW",
-        average_usage: 1.8 + "kW",
+        average_usage: 1.8 + " kW",
         amount_spent_this_month: "$" + 0,
         amount_saved_this_month: "$" + 0
   
@@ -121,27 +121,22 @@ class Main extends Component {
       powerContract.setProvider(this.state.web3.currentProvider)
   
       powerContract.deployed().then(instance => {
-        console.log(instance);
         instance.getProduction.call().then(data => {
-          console.log(data.toString())
           this.setState({
             production: data + " kW"
           });
         })
         instance.getCurrent_usage.call().then(data => {
-          console.log(data.toString())
           this.setState({
             current_usage: data + " kW"
           });
         })
         instance.getAmount_spent_this_month.call().then(data => {
-          console.log(data.toString())
           this.setState({
             amount_spent_this_month: "$" + data
           });
         })
         instance.getAmount_saved_this_month.call().then(data => {
-          console.log(data.toString())
           this.setState({
             amount_saved_this_month: "$" + data
           });
