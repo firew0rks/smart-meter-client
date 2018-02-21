@@ -21,7 +21,7 @@ import AlarmIcon from 'react-material-icons/icons/action/alarm';
 import ColumnDisplay from './ColumnDisplay';
 import RowDisplay from './RowDisplay';
 import NavBar from './NavBar';
-import {LineChart, YAxis, XAxis, CartesianGrid, Line, ResponsiveContainer} from 'recharts'; 
+import {LineChart, Legend, YAxis, XAxis, CartesianGrid, Line, Tooltip, ResponsiveContainer} from 'recharts'; 
 import {PieChart, Pie, Sector, Cell} from 'recharts';
 
 const dataLineChart = [
@@ -210,6 +210,7 @@ class App extends Component {
             <Grid>
               <ResponsiveContainer width={'100%'} height={300} >
                 <LineChart width={500} height={300} data={this.state.dataLineChart}>
+                  <Legend verticalAlign="top" height={36}/>
                   <XAxis dataKey="name"/>
                   <YAxis/>
                   {/* <CartesianGrid stroke="#eee" strokeDasharray="5 5"/> */}
@@ -243,6 +244,7 @@ class App extends Component {
                 <Grid item xs={12}>
                   <ResponsiveContainer width={'100%'} height={300}>
                     <PieChart width={1000} height={400} onMouseEnter={this.onPieEnter}>
+                      <Legend verticalAlign="top" height={36}/>
                       <Pie 
                         data={this.state.dataPieChart}
                         /* nameKey={"name"}  */
@@ -253,6 +255,7 @@ class App extends Component {
                         outerRadius={'100%'} 
                         fill='none'
                       >
+                        <Tooltip/>
                         {
                           dataPieChart.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
                         }
