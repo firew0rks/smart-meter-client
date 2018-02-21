@@ -3,22 +3,19 @@ import React, { Component } from 'react'
 import getWeb3 from './utils/getWeb3'
 import Power from '../build/contracts/Power.json'
 import SwitchLabels from './SwitchLabels'
-import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router'
 
 import './css/oswald.css'
 import './css/open-sans.css'
 import './css/pure-min.css'
 
-import {
-  Grid, Divider, Switch, AppBar, IconButton, Toolbar, Typography, 
-  Drawer, List, ListItem, Button
+import { Grid, Divider, Drawer, List, ListItem, Button
 } from 'material-ui';
 
 import ColumnDisplay from './ColumnDisplay';
 import RowDisplay from './RowDisplay';
 import NavBar from './NavBar';
-import {LineChart, Legend, YAxis, XAxis, CartesianGrid, Line, Tooltip, 
-  ResponsiveContainer, PieChart, Pie, Sector, Cell} from 'recharts'; 
+import {LineChart, Legend, YAxis, XAxis, Line, Tooltip, 
+  ResponsiveContainer, PieChart, Pie, Cell} from 'recharts'; 
 
   const dataLineChart = [
     //data for Line Chart
@@ -78,9 +75,9 @@ class Main extends Component {
         dataPieChart: dataPieChart,
         dataLineChart: dataLineChart,
         production: 0 + " kW",
-        efficiency: 11 + " %",
+        efficiency: 11 + "%",
         current_usage: 0 + " kW",
-        average_usage: 1.8 + "kW",
+        average_usage: 1.8 + " kW",
         amount_spent_this_month: "$" + 0,
         amount_saved_this_month: "$" + 0
   
@@ -124,25 +121,27 @@ class Main extends Component {
       powerContract.setProvider(this.state.web3.currentProvider)
   
       powerContract.deployed().then(instance => {
-        console.log(instance);
+
+        console.log(instance.get_user_information().toString())
+        instance.get_user_information({from: 0xffcf8fdee72ac11b5c542428b35eef5769c409f0}).then(result => {
+            console.log(0xffcf8fdee72ac11b5c542428b35eef5769c409f0);
+            console.log('Token balance: ', result[0].toString());
+            console.log('Production rate: ', result[1].toString());
+            console.log('Consumption rate: ', result[2].toString());
+            console.log('Current Usage:  ', result[3].toString());
+            console.log('Amount spent this month: ', result[4].toString());
+            console.log('Amount saved this month: ', result[5].toString());
+        })
+
         instance.getProduction.call().then(data => {
+          console.log(data.toString())
           this.setState({
             production: data + " kW"
-          });
-        })
-        instance.getEfficiency.call().then(data => {
-          this.setState({
-            efficiency: data + " %"
           });
         })
         instance.getCurrent_usage.call().then(data => {
           this.setState({
             current_usage: data + " kW"
-          });
-        })
-        instance.getAverage_usage.call().then(data => {
-          this.setState({
-            average_usage: data + " kW"
           });
         })
         instance.getAmount_spent_this_month.call().then(data => {
@@ -164,7 +163,6 @@ class Main extends Component {
   
       return <div>
         <NavBar toggleDrawer={() => this.toggleDrawer()}/>
-  
         <Grid container style={{padding: 30, height: '100%', marginTop: 30}}>
           <Grid item xs={6} style={{paddingRight: 25}}>
             <Grid container direction={'column'}>
@@ -174,7 +172,6 @@ class Main extends Component {
                     <h1>DASHBOARD</h1>
                   </Grid>
                   <Grid item xs={4}>
-                    
                   </Grid>
                   <Grid item xs={3} >
                   <div style={{display: 'flex', justifyContent: 'center', marginTop: 40}}>
@@ -202,7 +199,7 @@ class Main extends Component {
   
               </Grid>
               <Divider style={styles.divider}/>
-              <Grid container style={{height: '100%'},{width:'100%'}} alignItems={'center'}>
+              <Grid container style={{height: '100%', width:'100%'}} alignItems={'center'}>
                 <Grid item xs={12}>
                 <ResponsiveContainer width={'100%'} height={330} >
                   <LineChart width={500} height={300} data={this.state.dataLineChart}>
@@ -215,10 +212,9 @@ class Main extends Component {
                 </ResponsiveContainer>
                 </Grid>
                 <Grid container>
-                  <Grid item xs ={10}>
+                  <Grid item xs={10}>
                   </Grid>
-                  <Grid item xs = {2}>
-  
+                  <Grid item xs={2}>
                     {/* Selling Switch */}
                     <SwitchLabels/> 
                   </Grid>
@@ -288,7 +284,7 @@ class Main extends Component {
   {/* DRAWER */}
         <Drawer open={this.state.drawerIsOpen} anchor="right" classes={{root: {color: '#4C5760'}}}>
           <Button onClick={() => this.toggleDrawer()} style={{color: 'grey'}}>
-            x
+            Menu
           </Button>
 
         <List style={{width: 400, color: '#FFFFFF', backgroundColor: '#4C5760', fontSize: 20, marginRight: 10, fontFamily: "Roboto", fontWeight: 'bold'}}>

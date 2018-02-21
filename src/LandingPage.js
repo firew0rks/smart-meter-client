@@ -23,7 +23,7 @@ const styles = {
   }
 };
 
-const drawerMenu = ['View Transaction History ', 'My Solar', 'Exchange Marketplace', 'Account Settings', 'Leaderboard', 'Log Out'];
+const drawerMenu = ['Home', 'Main', 'View Transaction History ', 'My Solar', 'Exchange Marketplace', 'Account Settings', 'Leaderboard', 'Log Out'];
 
 class LandingPage extends Component {
   constructor(props) {
@@ -103,7 +103,7 @@ class LandingPage extends Component {
   {/* DRAWER */}
   <Drawer open={this.state.drawerIsOpen} anchor="right" classes={{root: {color: '#4C5760'}}}>
           <Button onClick={() => this.toggleDrawer()} style={{color: 'grey'}}>
-            x
+            Menu
           </Button>
 
         <List style={{boxShadow: '500px', width: 400, color: '#FFFFFF', backgroundColor: '#4C5760', fontSize: 20, marginRight: 10, fontFamily: "Roboto", fontWeight: 'bold'}}>
