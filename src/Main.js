@@ -116,7 +116,6 @@ class Main extends Component {
         * Normally these functions would be called in the context of a
         * state management library, but for convenience I've placed them here.
         */
-      console.log('here');
       const contract = require('truffle-contract')
       const powerContract = contract(Power)
       powerContract.setProvider(this.state.web3.currentProvider)
@@ -133,9 +132,6 @@ class Main extends Component {
                 current_usage: data[3] + " kW",
                 amount_spent_this_month: "$" + data[4],
                 amount_saved_this_month: "$" + data[5]
-
-
-
               });
             })
           })
