@@ -178,7 +178,7 @@ class App extends Component {
               <RowDisplay label={'Curent Usage'} text={this.state.current_usage}/>
             </Grid>
             <Grid item xs={12}>
-              <RowDisplay label={'Average Usage'} text={'1,247 kWh'}/>
+              <RowDisplay label={'Average Usage'} text={this.state.average_usage}/>
             </Grid>
           </Grid>
           <Grid container style={{height: 43}}/>
