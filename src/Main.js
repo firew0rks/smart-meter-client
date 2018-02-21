@@ -122,23 +122,17 @@ class Main extends Component {
   
       powerContract.deployed().then(instance => {
 
-        console.log(instance.get_user_information().toString())
-        instance.get_user_information({from: 0xffcf8fdee72ac11b5c542428b35eef5769c409f0}).then(result => {
-            console.log(0xffcf8fdee72ac11b5c542428b35eef5769c409f0);
-            console.log('Token balance: ', result[0].toString());
-            console.log('Production rate: ', result[1].toString());
-            console.log('Consumption rate: ', result[2].toString());
-            console.log('Current Usage:  ', result[3].toString());
-            console.log('Amount spent this month: ', result[4].toString());
-            console.log('Amount saved this month: ', result[5].toString());
-        })
 
-        instance.getProduction.call().then(data => {
-          console.log(data.toString())
-          this.setState({
-            production: data + " kW"
-          });
+        this.state.web3.eth.getAccounts((error, accounts) => {
+          powerContract.deployed().then(instance => {
+            instance.get_user_information({from: accounts[0]}).then(data => {
+              this.setState({
+                production: data[1] + " kWH"
+              });
+            })
+          })
         })
+        
         instance.getCurrent_usage.call().then(data => {
           this.setState({
             current_usage: data + " kW"
