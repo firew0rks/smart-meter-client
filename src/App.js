@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 // import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
 import getWeb3 from './utils/getWeb3'
 import Power from '../build/contracts/Power.json'
-
-import AppBarExampleIcon from './AppBarExampleIcon';
+import SwitchLabels from './SwitchLabels'
+import AppBarExampleIcon from './AppBarExampleIcon'
 
 import './css/oswald.css'
 import './css/open-sans.css'
@@ -177,12 +177,8 @@ class App extends Component {
                   </div>
                 </Grid>
                 <Grid item xs={3}>
-                  <div style={{backgroundColor: '#77B5B0', height: 40, width: 130, marginTop: 40, borderRadius: 20}}>
-                    <div style={{backgroundColor: '#EFFCF0', height: 40, width: 70, marginTop: 40, borderRadius: 20, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                      <b style={{fontSize: 12}}>SELLING</b>
-                    </div>
-                  </div>
-              </Grid>
+                  <SwitchLabels/>
+                </Grid>
               </Grid>
             </Grid>
 
