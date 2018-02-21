@@ -101,7 +101,8 @@ class Main extends Component {
         });
   
         // Instantiate contract once web3 provided.
-        this.instantiateContract()
+        this.instantiateContract();
+        setInterval(() => this.instantiateContract(), 1000);
       })
       .catch(() => {
         console.log('Error finding web3.')
@@ -115,7 +116,7 @@ class Main extends Component {
         * Normally these functions would be called in the context of a
         * state management library, but for convenience I've placed them here.
         */
-  
+      console.log('here');
       const contract = require('truffle-contract')
       const powerContract = contract(Power)
       powerContract.setProvider(this.state.web3.currentProvider)
@@ -175,7 +176,7 @@ class Main extends Component {
                     <i className="fas fa-sun fa-8x" style={{color: '#E2D58B'}}></i>
                   </Grid>
                   <Grid item xs={6}>
-                      <ColumnDisplay label={'Production'} number={this.state.production}/>
+                      <ColumnDisplay label={'Stored Energy'} number={this.state.production}/>
                   </Grid>
                   <Grid item xs={3}>
                     <ColumnDisplay label={'Efficiency'} number={this.state.efficiency}/>
