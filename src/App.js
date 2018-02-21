@@ -21,8 +21,7 @@ import AlarmIcon from 'react-material-icons/icons/action/alarm';
 import ColumnDisplay from './ColumnDisplay';
 import RowDisplay from './RowDisplay';
 import NavBar from './NavBar';
-import {LineChart, Legend, YAxis, XAxis, CartesianGrid, Line, Tooltip, ResponsiveContainer} from 'recharts'; 
-import {PieChart, Pie, Sector, Cell} from 'recharts';
+import {LineChart, Legend, YAxis, XAxis, CartesianGrid, Line, Tooltip, ResponsiveContainer, PieChart, Pie, Sector, Cell} from 'recharts'; 
 
 const dataLineChart = [
   //data for Line Chart
