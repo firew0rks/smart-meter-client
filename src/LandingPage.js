@@ -14,6 +14,7 @@ import {
 import ColumnDisplay from './ColumnDisplay';
 import RowDisplay from './RowDisplay';
 import NavBar from './NavBar';
+import RaisedButton from './RaisedButton';
 
 const styles = {
   divider: {
@@ -82,28 +83,11 @@ class LandingPage extends Component {
             fontWeight: 'bold'
             }}>
             <Grid item > 
-            {/* <Button label="Default" /> */}
-            <Button
-                label="Choose an Image"
-                labelPosition="before"
-                style={styles.uploadButton}
-                containerElement="label"
-                >
-                <input type="file" style={styles.uploadInput} />
+            
+            {/* BUTTON TO GO TO MAIN.JS */}
+            <Button variant="raised" className={this.button} href={'/main'}>
+              VIEW MY POWER CHAIN
             </Button>
-            {/* <Button
-                label="Label before"
-                labelPosition="before"
-                primary={true}
-                {/* icon={<ActionAndroid />} */}
-            {/*/> */}
-            {/* <Button
-                href="https://github.com/callemall/material-ui"
-                target="_blank"
-                label="GitHub Link"
-                secondary={true}
-                icon={<FontIcon className="muidocs-icon-custom-github" />}
-            /> */}
                 
                 {/* <Button disabled href="/" className={button}>
                 VIEW MY POWER CHAIN (Link disabled)
@@ -116,16 +100,16 @@ class LandingPage extends Component {
     </Grid>
             
     {/* DRAWER */}
-      <Drawer open={this.state.drawerIsOpen} anchor="right" classes={{root: {color: '#4C5760'}}}>
-        <Button onClick={() => this.toggleDrawer()} style={{color: 'grey'}}>
-          Menu
-        </Button>
+    <Drawer open={this.state.drawerIsOpen} anchor="right" classes={{root: {color: '#4C5760'}}}>
+          <Button onClick={() => this.toggleDrawer()} style={{color: 'grey'}}>
+            x
+          </Button>
 
         <List style={{width: 400, color: '#FFFFFF', backgroundColor: '#737E87', fontSize: 20, marginRight: 10, fontFamily: "Roboto", fontWeight: 'bold'}}>
 
           {drawerMenu.map((item, i) => {
             return <ListItem button key={i}>
-              {item}
+              <a href={"/" + item} color='#EFFCF0' fontSize='24' fontFamily="Roboto" fontWeight='400'> {item}</a>
             </ListItem>
           })}
 
