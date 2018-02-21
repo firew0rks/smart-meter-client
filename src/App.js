@@ -15,9 +15,6 @@ import {
   Button
 } from 'material-ui';
 
-import mui from 'material-ui';
-import AlarmIcon from 'react-material-icons/icons/action/alarm';
-
 import ColumnDisplay from './ColumnDisplay';
 import RowDisplay from './RowDisplay';
 import NavBar from './NavBar';
@@ -75,8 +72,8 @@ class App extends Component {
       storageValue: 0,
       web3: null,
       drawerIsOpen: false,
-      dataLineChart: dataLineChart,
       dataPieChart: dataPieChart,
+      dataLineChart: dataLineChart,
       production: 0 + " kWH",
       efficiency: 0 + " %",
       current_usage: 0 + " kWH",
@@ -206,17 +203,18 @@ class App extends Component {
 
             </Grid>
             <Divider style={styles.divider}/>
-            <Grid>
-              <ResponsiveContainer width={'100%'} height={300} >
+            <Grid container style={{height: '100%'},{width:'100%'}} alignItems={'center'}>
+              <Grid item xs={12}>
+              <ResponsiveContainer width={'100%'} height={330} >
                 <LineChart width={500} height={300} data={this.state.dataLineChart}>
                   <Legend verticalAlign="bottom" height={36}/>
                   <XAxis dataKey="name"/>
                   <YAxis/>
-                  {/* <CartesianGrid stroke="#eee" strokeDasharray="5 5"/> */}
                   <Line type="monotone" dataKey="uv" stroke="#D1EEDC" />
                   <Line type="monotone" dataKey="pv" stroke="#4C5760" />
                 </LineChart>
               </ResponsiveContainer>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
@@ -243,10 +241,9 @@ class App extends Component {
                 <Grid item xs={12}>
                   <ResponsiveContainer width={'100%'} height={330}>
                     <PieChart width={1000} height={400} onMouseEnter={this.onPieEnter}>
-                      <Legend verticalAlign="bottom" height={30}/>
+                    <Legend verticalAlign="bottom" height={30} layout="vertical"/>
                       <Pie 
                         data={this.state.dataPieChart}
-                        /* nameKey={"name"}  */
                         cx={200} 
                         cy={145} 
                         labelLine={false}
