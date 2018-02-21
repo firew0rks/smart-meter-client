@@ -3,8 +3,6 @@ import React, { Component } from 'react'
 import getWeb3 from './utils/getWeb3'
 import Power from '../build/contracts/Power.json'
 
-import AppBarExampleIcon from './AppBarExampleIcon';
-
 import './css/oswald.css'
 import './css/open-sans.css'
 import './css/pure-min.css'
@@ -62,7 +60,7 @@ const styles = {
   }
 };
 
-const drawerMenu = ['Hello', 'World'];
+const drawerMenu = ['View Transaction History ', 'My Solar', 'Exchange Marketplace', 'Account Settings', 'Leaderboard', 'Log Out'];
 
 class App extends Component {
   constructor(props) {
@@ -279,10 +277,11 @@ class App extends Component {
 
       <Drawer open={this.state.drawerIsOpen} anchor="right" classes={{root: {color: '#4C5760'}}}>
         <Button onClick={() => this.toggleDrawer()} style={{color: 'grey'}}>
-          x
+          Menu
         </Button>
 
-        <List style={{width: 400, color: '#EFFCF0'}}>
+        <List style={{width: 400, color: '#EFFCF0', backgroundColor: '#737E87', fontSize: 24, marginRight: 10, fontFamily: "Roboto", fontWeight: 400}}>
+
           {drawerMenu.map((item, i) => {
             return <ListItem button key={i}>
               {item}
