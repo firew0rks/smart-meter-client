@@ -105,7 +105,7 @@ class LandingPage extends Component {
             x
           </Button>
 
-        <List style={{width: 400, color: '#FFFFFF', backgroundColor: '#4C5760', fontSize: 20, marginRight: 10, fontFamily: "Roboto", fontWeight: 'bold'}}>
+        <List style={{boxShadow: '500px', width: 400, color: '#FFFFFF', backgroundColor: '#4C5760', fontSize: 20, marginRight: 10, fontFamily: "Roboto", fontWeight: 'bold'}}>
 
           {drawerMenu.map((item, i) => {
             return <ListItem button key={i}>
