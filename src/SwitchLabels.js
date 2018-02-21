@@ -46,7 +46,7 @@ class SwitchLabels extends React.Component {
               }}
             />
           } 
-          label="Selling"
+          label="SELLING"
         />
       </FormGroup>
     );

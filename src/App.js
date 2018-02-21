@@ -22,13 +22,13 @@ import {LineChart, Legend, YAxis, XAxis, CartesianGrid, Line, Tooltip, Responsiv
 
 const dataLineChart = [
   //data for Line Chart
-    {name: '', 'Energy Produced': 100, 'Energy Sold': 0},
-    {name: '', 'Energy Produced': 170, 'Energy Sold': 50},
-    {name: '', 'Energy Produced': 200, 'Energy Sold': 25},
-    {name: '', 'Energy Produced': 150, 'Energy Sold': 70},
-    {name: '', 'Energy Produced': 210, 'Energy Sold': 85},
-    {name: '', 'Energy Produced': 300, 'Energy Sold': 200},
-    {name: 'Last 24hrs', 'Energy Produced': 300, 'Energy Sold': 220},
+    {name: '', 'ENERGY PRODUCED': 100, 'ENERGY SOLD': 0},
+    {name: '', 'ENERGY PRODUCED': 170, 'ENERGY SOLD': 50},
+    {name: '', 'ENERGY PRODUCED': 200, 'ENERGY SOLD': 25},
+    {name: '', 'ENERGY PRODUCED': 150, 'ENERGY SOLD': 70},
+    {name: '', 'ENERGY PRODUCED': 210, 'ENERGY SOLD': 85},
+    {name: '', 'ENERGY PRODUCED': 300, 'ENERGY SOLD': 200},
+    {name: 'Last 24hrs', 'ENERGY PRODUCED': 300, 'ENERGY SOLD': 220},
   ];
   //adds units to the y-axis
   const formatter = (value) => `${value} kW`;
@@ -64,7 +64,7 @@ const styles = {
   }
 };
 
-const drawerMenu = ['Hello', 'World'];
+const drawerMenu = ['View Transaction History ', 'My Solar', 'Exchange Marketplace', 'Account Settings', 'Leaderboard', 'Log Out'];
 
 class App extends Component {
   constructor(props) {
@@ -208,8 +208,8 @@ class App extends Component {
                   <Legend verticalAlign="bottom" height={36}/>
                   <XAxis dataKey={"name"}/>
                   <YAxis tickFormatter={formatter}/>
-                  <Line type="monotone" dataKey="Energy Produced" stroke="#D1EEDC" />
-                  <Line type="monotone" dataKey="Energy Sold" stroke="#4C5760" />
+                  <Line type="monotone" dataKey="ENERGY PRODUCED" stroke="#D1EEDC" />
+                  <Line type="monotone" dataKey="ENERGY SOLD" stroke="#4C5760" />
                 </LineChart>
               </ResponsiveContainer>
               </Grid>
@@ -286,10 +286,11 @@ class App extends Component {
 
       <Drawer open={this.state.drawerIsOpen} anchor="right" classes={{root: {color: '#4C5760'}}}>
         <Button onClick={() => this.toggleDrawer()} style={{color: 'grey'}}>
-          x
+          Menu
         </Button>
 
-        <List style={{width: 400, color: '#EFFCF0'}}>
+        <List style={{width: 400, color: '#FFFFFF', backgroundColor: '#737E87', fontSize: 20, marginRight: 10, fontFamily: "Roboto", fontWeight: 'bold'}}>
+
           {drawerMenu.map((item, i) => {
             return <ListItem button key={i}>
               {item}
