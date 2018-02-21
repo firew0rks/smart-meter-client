@@ -62,7 +62,7 @@ const styles = {
   }
 };
 
-const drawerMenu = ['Home', 'View Transaction History ', 'My Solar', 'Exchange Marketplace', 'Account Settings', 'Leaderboard', 'Log Out'];
+const drawerMenu = ['Home', 'Main', 'View Transaction History', 'My Solar', 'Exchange Marketplace', 'Account Settings', 'Leaderboard', 'Log Out'];
 
 class Main extends Component {
   constructor(props) {
@@ -286,7 +286,7 @@ class Main extends Component {
 
           {drawerMenu.map((item, i) => {
             return <ListItem button key={i}>
-              <a href='/home' color='#EFFCF0' fontSize='24' fontFamily="Roboto" fontWeight='400'> {item}</a>
+              <a href={"/" + item} color='#EFFCF0' fontSize='24' fontFamily="Roboto" fontWeight='400'> {item}</a>
             </ListItem>
           })}
 

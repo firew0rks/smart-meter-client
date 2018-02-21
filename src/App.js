@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { Route, Link, IndexRoute, browserHistory } from 'react-router'
 import { BrowserRouter as Router } from 'react-router-dom'
+import LandingPage from './LandingPage'
+
+
 
 import Main from './Main'
 import './App.css'
 
-const Address = () => <h1>We are located at 555 Jackson St.</h1>
+const My404Component = () => <h1>HTTP 404 - Webpage not found</h1>
 
 class App extends Component {
   render() {
@@ -13,7 +16,7 @@ class App extends Component {
         <Router>
           <div>
             <Route path='/main' component={Main} />
-            <Route path='/home' component={Address} />
+            <Route path='/home' component={LandingPage} />
           </div>
         </Router>
     )
