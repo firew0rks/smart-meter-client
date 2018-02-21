@@ -185,7 +185,6 @@ class App extends Component {
                   <Line type="monotone" dataKey="pv" stroke="#4C5760" />
                 </LineChart>
               </ResponsiveContainer>
-              
             </Grid>
           </Grid>
         </Grid>
