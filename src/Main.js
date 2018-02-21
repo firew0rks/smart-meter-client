@@ -295,7 +295,7 @@ class Main extends Component {
 
           {drawerMenu.map((item, i) => {
             return <ListItem button key={i}>
-              <a href={"/" + item} color='#EFFCF0' fontSize='24' fontFamily="Roboto" fontWeight='400'> {item}</a>
+              <a href={"/" + item} style={{color:'#FFFFFF', fontSize:'22', fontFamily:"Roboto", fontWeight:'bold'}}> {item}</a>
             </ListItem>
           })}
 

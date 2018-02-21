@@ -85,7 +85,7 @@ class LandingPage extends Component {
             <Grid item > 
             
             {/* BUTTON TO GO TO MAIN.JS */}
-            <Button variant="raised" className={this.button} href={'/main'} style={{border: 'solid', color: 'white', backgroundColor: '#73bfb8', minWidth:450, minHeight: 150,borderRadius:30}}>
+            <Button variant="raised" className={this.button} href={'/main'} style={{fontFamily: "Roboto", fontWeight: 'bold', fontSize: 45, border: 'solid', color: 'white', backgroundColor: '#73bfb8', minWidth:450, minHeight: 150,borderRadius:30}}>
               VIEW MY POWER CHAIN
             </Button>
                 
@@ -99,17 +99,17 @@ class LandingPage extends Component {
         </Grid>
     </Grid>
             
-    {/* DRAWER */}
-    <Drawer open={this.state.drawerIsOpen} anchor="right" classes={{root: {color: '#4C5760'}}}>
+  {/* DRAWER */}
+  <Drawer open={this.state.drawerIsOpen} anchor="right" classes={{root: {color: '#4C5760'}}}>
           <Button onClick={() => this.toggleDrawer()} style={{color: 'grey'}}>
             x
           </Button>
 
-        <List style={{width: 400, color: '#FFFFFF', backgroundColor: '#737E87', fontSize: 20, marginRight: 10, fontFamily: "Roboto", fontWeight: 'bold'}}>
+        <List style={{width: 400, color: '#FFFFFF', backgroundColor: '#4C5760', fontSize: 20, marginRight: 10, fontFamily: "Roboto", fontWeight: 'bold'}}>
 
           {drawerMenu.map((item, i) => {
             return <ListItem button key={i}>
-              <a href={"/" + item} color='#EFFCF0' fontSize='24' fontFamily="Roboto" fontWeight='400'> {item}</a>
+              <a href={"/" + item} style={{color:'#FFFFFF', fontSize:'22', fontFamily:"Roboto", fontWeight:'bold'}}> {item}</a>
             </ListItem>
           })}
 
