@@ -78,7 +78,7 @@ class Main extends Component {
         dataPieChart: dataPieChart,
         dataLineChart: dataLineChart,
         production: 0 + " kW",
-        efficiency: 0 + " %",
+        efficiency: 11 + " %",
         current_usage: 0 + " kW",
         average_usage: 1.8 + "kW",
         amount_spent_this_month: "$" + 0,
