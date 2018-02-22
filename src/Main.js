@@ -79,7 +79,8 @@ class Main extends Component {
         current_usage: 0 + " kW",
         average_usage: 1.8 + " kW",
         amount_spent_this_month: "$" + 0,
-        amount_saved_this_month: "$" + 0
+        amount_saved_this_month: "$" + 0,
+        balance: 0
   
       }
     }
@@ -131,7 +132,8 @@ class Main extends Component {
                 production: data[1] + " kWH",
                 current_usage: data[3] + " kW",
                 amount_spent_this_month: "$" + data[4],
-                amount_saved_this_month: "$" + data[5]
+                amount_saved_this_month: "$" + data[5],
+                balance: data[0].toString()
               });
             })
           })
@@ -157,7 +159,7 @@ class Main extends Component {
                   </Grid>
                   <Grid item xs={3} >
                   <div style={{display: 'flex', justifyContent: 'center', marginTop: 40}}>
-                      <b style={{fontSize: 40, color: '#DCEED1', marginRight: 10 }}>7238</b>
+                      <b style={{fontSize: 40, color: '#DCEED1', marginRight: 10 }}>{this.state.balance}</b>
                       <img src="/images/logo.png" style={{height: 40}}/>
                     </div>
                   </Grid>
