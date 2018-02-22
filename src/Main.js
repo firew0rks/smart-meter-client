@@ -212,7 +212,7 @@ class Main extends Component {
             <Grid container style={{height: 50}}/>
             <Grid container style={{height: 300}}>
               <Grid item xs={12}>
-                <RowDisplay label={'Curent Usage'} text={this.state.current_usage}/>
+                <RowDisplay label={'Current Usage'} text={this.state.current_usage}/>
               </Grid>
               <Grid item xs={12}>
                 <RowDisplay label={'Average Usage'} text={this.state.average_usage}/>
