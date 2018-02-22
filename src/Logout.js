@@ -87,7 +87,7 @@ class Logout extends Component {
             {/* BUTTON TO GO TO MAIN.JS */}
               <div style={{marginLeft:50, AlignSelf:'center', fontFamily: "Roboto", fontWeight: 'bold', fontSize: 45, color: 'white',minWidth:450, minHeight: 150,borderRadius:30}}>
             {/*  , }} */}
-              LOGOUT SUCCESSFUL
+              LOGGED OUT
             </div>
                 
                 {/* <Button disabled href="/" className={button}>
