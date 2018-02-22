@@ -74,10 +74,10 @@ class Main extends Component {
         drawerIsOpen: false,
         dataPieChart: dataPieChart,
         dataLineChart: dataLineChart,
-        production: 0 + " kW",
+        production: 0 + " kWH",
         efficiency: 11 + "%",
-        current_usage: 0 + " kW",
-        average_usage: 1.8 + " kW",
+        current_usage: 0 + " kWH",
+        average_usage: 18.3 + " kWH",
         amount_spent_this_month: "$" + 0,
         amount_saved_this_month: "$" + 0,
         balance: 0
@@ -130,7 +130,7 @@ class Main extends Component {
             instance.get_user_information({from: accounts[0]}).then(data => {
               this.setState({
                 production: data[1] + " kWH",
-                current_usage: data[3] + " kW",
+                current_usage: (data[2]/1000).toPrecision(3) + " kWH",
                 amount_spent_this_month: "$" + data[4],
                 amount_saved_this_month: "$" + data[5],
                 balance: data[0].toString()
@@ -212,7 +212,7 @@ class Main extends Component {
             <Grid container style={{height: 50}}/>
             <Grid container style={{height: 300}}>
               <Grid item xs={12}>
-                <RowDisplay label={'Current Usage'} text={this.state.current_usage}/>
+                <RowDisplay label={'Daily Usage'} text={this.state.current_usage}/>
               </Grid>
               <Grid item xs={12}>
                 <RowDisplay label={'Average Usage'} text={this.state.average_usage}/>
