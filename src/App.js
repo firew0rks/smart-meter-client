@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Route, Link, IndexRoute, browserHistory } from 'react-router'
 import { BrowserRouter as Router } from 'react-router-dom'
 import LandingPage from './LandingPage'
+import Logout from './Logout'
 
 
 
@@ -17,7 +18,7 @@ class App extends Component {
           <div>
             <Route path='/main' component={Main} />
             <Route path='/home' component={LandingPage} />
-            <Route path='/log out' component={LandingPage} />
+            <Route path='/logout' component={Logout} />
           </div>
         </Router>
     )
