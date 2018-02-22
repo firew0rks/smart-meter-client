@@ -85,7 +85,7 @@ class Logout extends Component {
             <Grid item > 
             
             {/* BUTTON TO GO TO MAIN.JS */}
-              <div style={{marginLeft:50, AlignSelf:'center', fontFamily: "Roboto", fontWeight: 'bold', fontSize: 45, color: 'white',minWidth:450, minHeight: 150,borderRadius:30}}>
+              <div style={{marginTop:50, marginLeft:250, AlignSelf:'center', fontFamily: "Roboto", fontWeight: 'bold', fontSize: 45, color: 'white',minWidth:450, minHeight: 150,borderRadius:30}}>
             {/*  , }} */}
               LOGGED OUT
             </div>
